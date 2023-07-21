@@ -10,6 +10,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
     certmanager.k8s.io/issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
   rules:
   - http:
       paths:
@@ -18,6 +19,6 @@ spec:
         backend:
           service:
             name: {{ .Values.service.name }}
-            port: 
+            port:
               number: 80
     host: {{ .Values.ingress.host }}
